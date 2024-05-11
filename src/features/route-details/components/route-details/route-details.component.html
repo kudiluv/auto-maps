@@ -1,0 +1,101 @@
+<app-vehicle-layer
+  [vehicles]="(vehicles$ | async) ?? []"
+  [onClick]="onClickBus"></app-vehicle-layer>
+
+<app-direction-changer
+  *ngIf="routeDetailsFromApi$ | async as routeDetails"
+  [(open)]="isOpenChangeDirection"
+  [routeDetail]="routeDetails" />
+
+<mgl-geojson-source
+  id="route-details-path-source"
+  [data]="(routePath$ | async) ?? undefined" />
+<mgl-layer
+  type="line"
+  id="route-details-path-layer-wrapper"
+  source="route-details-path-source"
+  [layout]="{
+    'line-join': 'round',
+    'line-cap': 'round'
+  }"
+  [paint]="{
+    'line-width': 7,
+    'line-color': 'white'
+  }" />
+<mgl-layer
+  type="line"
+  id="route-details-path-layer"
+  source="route-details-path-source"
+  [layout]="{
+    'line-join': 'round',
+    'line-cap': 'round'
+  }"
+  [paint]="{
+    'line-width': 5,
+    'line-color': '#415aa5'
+  }" />
+
+<app-bus-stations [busStations]="(routeBusStations$ | async) ?? []" />
+
+<ng-template
+  [tuiSheetOptions]="options"
+  [(tuiSheet)]="open"
+  (tuiSheetChange)="onOpenChange()">
+  <div
+    class="header"
+    tuiSheetHeading
+    *ngIf="routeDetails$ | async as routeDetails; else routeNumberLoader">
+    {{ routeTypeHuman$ | async }} {{ routeDetails.routeNum }}
+  </div>
+  <div class="tui-text_body-s" *ngIf="routeDetails$ | async as routeDetails">
+    {{ routeDetails.stations[0].name }}
+    <tui-icon icon="tuiIconChevronRight" [style.fontSize.rem]="0.6" />
+    {{ routeDetails.stations.at(-1)?.name }}
+  </div>
+  <ng-container *ngIf="routeDetails$ | async as routeDetails; else bodyLoader">
+    <p
+      class="tui-text_body-s"
+      [style.fontWeight]="500"
+      tuiRipple
+      (click)="isOpenChangeDirection = true">
+      Другие варианты маршрута {{ routeDetails.routeNum }}
+    </p>
+    <div
+      class="tui-text_body-s stations-header"
+      [class.stations-header_dark]="darkMode">
+      {{ routeDetails.stations.length }}
+      {{
+        routeDetails.stations.length
+          | noun: 'остановка' : 'остановки' : 'остановок'
+      }}
+    </div>
+    <div class="stations">
+      @for (station of routeDetails.stations; track $index) {
+        <div class="tui-text_body-s station" tuiRipple [style.fontWeight]="500">
+          <div class="station__icon-wrapper">
+            <div class="station__icon"></div>
+          </div>
+          {{ station.name }}
+        </div>
+      }
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #routeNumberLoader>
+  <div [style.paddingBottom.px]="10">
+    <div class="header" tuiSheetHeading>
+      <span [class.tui-skeleton]="true" [style.--tui-skeleton-radius.px]="5">
+        bus number
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #bodyLoader>
+  <div [style.--tui-skeleton-radius.px]="5">
+    <span [class.tui-skeleton]="true" [style.marginRight.px]="20">
+      другие варианты маршрута
+    </span>
+  </div>
+</ng-template>

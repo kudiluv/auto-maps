@@ -1,0 +1,15 @@
+<ng-template
+  let-observer
+  [(tuiSheetDialog)]="open"
+  (tuiSheetDialogChange)="openChange.emit($event)">
+  @for (data of directionVariants$ | async; track data.from) {
+    <div (click)="changeDirection(data.value)">
+      @if (data.selected) {
+        <tui-icon icon="tuiIconCheck"></tui-icon>
+      }
+      {{ data.from }}
+      <tui-icon icon="tuiIconChevronRight" [style.fontSize.rem]="0.6" />
+      {{ data.to }}
+    </div>
+  }
+</ng-template>

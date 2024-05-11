@@ -1,0 +1,50 @@
+.header {
+  font-weight: 500;
+  font: var(--tui-font-text-xl);
+}
+
+.stations-header {
+  background-color: white;
+  color: var(--tui-text-02);
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.stations-header_dark {
+  background: black;
+}
+
+.station {
+  margin-left: -1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+.station__icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+}
+.station__icon {
+  width: 8px;
+  height: 8px;
+  background: var(--tui-primary);
+  border-radius: 50%;
+}
+
+.station:first-child .station__icon {
+  width: 10px;
+  height: 10px;
+}
+.station:last-child .station__icon {
+  width: 10px;
+  height: 10px;
+}
+

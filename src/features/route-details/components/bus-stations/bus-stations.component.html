@@ -1,0 +1,13 @@
+<mgl-geojson-source [data]="_busStatations" id="route-bus-stations-source" />
+
+<mgl-layer
+  id="route-bus-stations-layer"
+  type="circle"
+  source="route-bus-stations-source"
+  (layerClick)="onClick($event)"
+  [paint]="{
+    'circle-radius': 3,
+    'circle-color': '#415aa5',
+    'circle-stroke-color': 'white',
+    'circle-stroke-width': 1
+  }" />

@@ -1,0 +1,15 @@
+<div class="controllers-left">
+  @for (controller of controllersLeft$ | async; track $index) {
+    <ng-container *ngTemplateOutlet="controller.template"></ng-container>
+  }
+</div>
+<div class="controllers-center">
+  @for (controller of controllersCenter$ | async; track $index) {
+    <ng-container *ngTemplateOutlet="controller.template"></ng-container>
+  }
+</div>
+<div class="controllers-right">
+  @for (controller of controllersRight$ | async; track $index) {
+    <ng-container *ngTemplateOutlet="controller.template"></ng-container>
+  }
+</div>

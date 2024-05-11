@@ -1,0 +1,40 @@
+.filter-container {
+}
+.container {
+  width: 100%;
+}
+.filter {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
+.filter-description {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter-description-route-icon {
+  background: var(--tui-primary);
+  color: var(--tui-primary-text);
+  width: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px;
+  flex-shrink: 0
+}
+
+.emptyWarning {
+  margin-top: 25px;
+  box-shadow: var(--tui-shadow);
+  background: var(--tui-base-01);
+}
+
+.scrollItem {
+  width: 100%;
+}

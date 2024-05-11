@@ -1,0 +1,14 @@
+.stops {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+  box-shadow: var(--tui-shadow);
+  background: var(--tui-base-01);;
+}
+
+mgl-map {
+  height: 100vh;
+  width: 100%;
+}

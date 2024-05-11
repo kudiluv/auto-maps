@@ -1,0 +1,23 @@
+.controllers-left {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+}
+.controllers-center {
+  display: flex;
+  position: fixed;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+.controllers-right {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+}

@@ -1,0 +1,33 @@
+.marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.marker__zoomed {
+  scale: 1.5;
+}
+.marker__svg {
+  
+}
+.marker__text {
+  position: absolute;
+  color: var(--tui-text-01);
+}
+::ng-deep html google-map[mapdraged="false"] .yNHHyP-marker-view {
+  transition: 0.3s;
+}
+
+.maker-color_active {
+  stroke:#4159A4;
+  stroke-width:4;
+  fill: var(--tui-base-01);
+}
+
+.maker-color_disabled {
+  stroke:#4159A4;
+  stroke-width:4;
+  fill: var(--tui-base-01);
+  opacity: 0.4;
+}

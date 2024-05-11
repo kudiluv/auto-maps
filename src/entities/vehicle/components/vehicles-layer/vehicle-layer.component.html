@@ -1,0 +1,12 @@
+<mgl-geojson-source id="bus-positions-source" [data]="_vehicles">
+</mgl-geojson-source>
+<mgl-layer
+  (layerClick)="_onClick($event)"
+  id="bus-postions-layer"
+  type="symbol"
+  [minzoom]="10"
+  source="bus-positions-source"
+  [layout]="_layout"
+  [paint]="{
+    'icon-opacity': ['case', ['==', ['get', 'active'], true], 0.95, 0.5]
+  }" />

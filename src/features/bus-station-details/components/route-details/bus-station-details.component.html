@@ -1,0 +1,26 @@
+<ng-template
+  [tuiSheetOptions]="options"
+  [(tuiSheet)]="open"
+  (tuiSheetChange)="onOpenChange()">
+  <div *ngIf="details$ | async as details" class="header" tuiSheetHeading>
+    {{ details.name }}
+  </div>
+  @for (item of routes$ | async; track item) {
+    <span class="busStationsHeader">{{ getRoutesHeader(item[0]) }}</span>
+    <div class="busStations">
+      @for (route of item[1]; track $index) {
+        <button class="busStationBadge">{{ route.routeNum }}</button>
+      }
+    </div>
+  }
+</ng-template>
+
+<ng-template #busStopLoader>
+  <div [style.paddingBottom.px]="10">
+    <div class="header" tuiSheetHeading>
+      <span [class.tui-skeleton]="true" [style.--tui-skeleton-radius.px]="5">
+        bus number
+      </span>
+    </div>
+  </div>
+</ng-template>

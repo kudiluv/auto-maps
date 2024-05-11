@@ -1,0 +1,18 @@
+<mgl-map
+  *ngIf="mapStyle | async as style"
+  [style]="style"
+  [zoom]="[13]"
+  [center]="[39.70530751811469, 47.24616282214704]">
+  <mgl-image id="stop-image" url="/assets/bus.png" />
+  <app-vehicle-marker></app-vehicle-marker>
+
+  <router-outlet></router-outlet>
+</mgl-map>
+
+<button
+  tuiIconButton
+  icon="tuiIconDisc"
+  appearance=""
+  class="stops"
+  size="m"
+  (click)="getLocation()"></button>
