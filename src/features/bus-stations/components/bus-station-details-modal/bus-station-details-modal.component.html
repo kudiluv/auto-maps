@@ -1,0 +1,25 @@
+<ion-modal
+  #modal
+  mode="ios"
+  [isOpen]="true"
+  [initialBreakpoint]="0.25"
+  [backdropBreakpoint]="0.5"
+  [backdropDismiss]="false"
+  (didDismiss)="close()"
+  [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+  <ng-template>
+    <ion-content class="ion-padding">
+      <div *ngIf="details$ | async as details" class="header">
+        {{ details.name }}
+      </div>
+      @for (item of routes$ | async; track item) {
+        <span class="busStationsHeader">{{ getRoutesHeader(item[0]) }}</span>
+        <div class="busStations">
+          @for (route of item[1]; track $index) {
+            <button class="busStationBadge">{{ route.routeNum }}</button>
+          }
+        </div>
+      }
+    </ion-content>
+  </ng-template>
+</ion-modal>

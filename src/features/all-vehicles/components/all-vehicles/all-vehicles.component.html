@@ -1,33 +1,7 @@
-<app-controller position="left">
-  <button
-    tuiIconButton
-    icon="tuiIconList"
-    appearance=""
-    class="filterMenu"
-    size="m"
-    [@tuiScaleIn]="getAnimation(300)"
-    (click)="toggle(true)"
-    (tuiActiveZoneChange)="toggle($event)">
-    <app-filter [open]="isOpenFilters" />
-  </button>
-</app-controller>
-
-@if (stopsStore.stops | async; as stops) {
-  <mgl-geojson-source id="stops-source" [data]="stops"> </mgl-geojson-source>
-  <mgl-layer
-    id="stops"
-    type="symbol"
-    source="stops-source"
-    [minzoom]="12"
-    before="bus-postions-layer"
-    (layerClick)="_onClick($event)"
-    [layout]="{
-      'icon-allow-overlap': true,
-      'icon-image': 'stop-image',
-      'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.1, 15, 0.5]
-    }"></mgl-layer>
-}
-
+<app-map-data>
+  <app-filter />
+</app-map-data>
 <app-vehicle-layer
+  [id]="vehicleLayerId"
   [vehicles]="(vehiclesStore.vehicles | async) ?? []"
   [onClick]="showDetailedRoute"></app-vehicle-layer>

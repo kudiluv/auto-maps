@@ -1,6 +1,8 @@
 <tui-theme-night *ngIf="night.isDark | async"></tui-theme-night>
-<tui-root>
-  <router-outlet />
-  <tui-sheets-host ngProjectAs="tuiOverContent"> </tui-sheets-host>
-  <app-controller-host />
-</tui-root>
+<ion-app [class.ion-palette-dark]="night.isDark | async">
+  <tui-root>
+    <router-outlet />
+    <tui-sheets-host ngProjectAs="tuiOverContent"> </tui-sheets-host>
+    <app-controller-host />
+  </tui-root>
+</ion-app>

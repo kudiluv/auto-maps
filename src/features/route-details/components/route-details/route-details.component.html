@@ -1,4 +1,5 @@
 <app-vehicle-layer
+  [id]="'vehicles'"
   [vehicles]="(vehicles$ | async) ?? []"
   [onClick]="onClickBus"></app-vehicle-layer>
 
@@ -60,9 +61,7 @@
       (click)="isOpenChangeDirection = true">
       Другие варианты маршрута {{ routeDetails.routeNum }}
     </p>
-    <div
-      class="tui-text_body-s stations-header"
-      [class.stations-header_dark]="darkMode">
+    <div class="tui-text_body-s stations-header">
       {{ routeDetails.stations.length }}
       {{
         routeDetails.stations.length

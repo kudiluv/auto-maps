@@ -14,6 +14,7 @@ import { TuiThemeNightModule, TuiModeModule } from '@taiga-ui/core';
 import { DarkModeService } from 'shared/services/dark-mode.service';
 import { TuiSheetDialogModule, TuiSheetModule } from '@taiga-ui/addon-mobile';
 import { ControllerModule } from 'shared/modules/controller/controller.module';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,7 @@ import { ControllerModule } from 'shared/modules/controller/controller.module';
     TuiSheetDialogModule,
     TuiSheetModule,
     ControllerModule,
+    IonicModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

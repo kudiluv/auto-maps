@@ -1,47 +1,56 @@
 @if (isEmptyBusesPositions$ | async) {
   <app-controller position="center">
-    <button
+    <ion-button
       tuiButton
       icon="tuiIconAlertTriangle"
       appearance="accent"
       class="emptyWarning"
-      [@tuiScaleIn]="getAnimation(300)"
       (click)="promptClearFilter()"
       size="s">
       Транспорт не найден
-    </button>
+    </ion-button>
   </app-controller>
 }
+<app-controller position="left">
+  <ion-button class="filterMenu" (click)="openFilter()">
+    <ion-icon slot="icon-only" name="menu"></ion-icon>
+  </ion-button>
+</app-controller>
 
-<rx-virtual-scroll-viewport
-  *tuiSidebar="open"
-  [itemSize]="40"
-  class="filter-container">
-  <div *rxVirtualFor="let item of form$; trackBy: trackBy" class="scrollItem">
-    @switch (item.type) {
-      @case ('all') {
-        <button class="filter" (click)="item.onChange()" tuiRipple>
-          Весь транспорт<tui-primitive-checkbox [value]="item.value | async" />
-        </button>
-      }
-      @case ('group') {
-        <button class="filter" (click)="item.onChange()" tuiRipple>
-          {{ groupToName($any(item.group)) }}
-          <tui-primitive-checkbox [value]="item.value | async" />
-        </button>
-      }
-      @case ('item') {
-        <button (click)="item.onChange()" class="filter" tuiRipple>
-          <div class="filter-description">
-            <div class="filter-description-route-icon">
-              <span class="tui-text_body-s-2">{{ item.data.routeNum }}</span>
+<ion-menu #menu>
+  <rx-virtual-scroll-viewport [itemSize]="40">
+    <div *rxVirtualFor="let item of form$; trackBy: trackBy" class="scrollItem">
+      @switch (item.type) {
+        @case ('all') {
+          <button class="filter" (click)="item.onChange()">
+            Весь транспорт
+            <ion-checkbox
+              class="noClick"
+              [checked]="item.value | async"></ion-checkbox>
+          </button>
+        }
+        @case ('group') {
+          <button class="filter" (click)="item.onChange()">
+            {{ groupToName($any(item.group)) }}
+            <ion-checkbox
+              class="noClick"
+              [checked]="item.value | async"></ion-checkbox>
+          </button>
+        }
+        @case ('item') {
+          <button (click)="item.onChange()" class="filter">
+            <div class="filter-description">
+              <div class="filter-description-route-icon">
+                <span class="tui-text_body-s-2">{{ item.data.routeNum }}</span>
+              </div>
+              {{ itemToName(item.data.type) }}
             </div>
-            {{ itemToName(item.data.type) }}
-          </div>
-          <tui-primitive-checkbox
-            [value]="item.value | async"></tui-primitive-checkbox>
-        </button>
+            <ion-checkbox
+              class="noClick"
+              [checked]="item.value | async"></ion-checkbox>
+          </button>
+        }
       }
-    }
-  </div>
-</rx-virtual-scroll-viewport>
+    </div>
+  </rx-virtual-scroll-viewport>
+</ion-menu>

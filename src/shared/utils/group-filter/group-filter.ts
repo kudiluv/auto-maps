@@ -135,4 +135,9 @@ export class GroupFilter<V, T extends keyof V>
 
     this.subject.next(this);
   };
+
+  public clear() {
+    this._selectedValues = new Set(this.allValues);
+    this.subject.next(this);
+  }
 }

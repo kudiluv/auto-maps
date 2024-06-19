@@ -1,0 +1,42 @@
+@if (stopsStore.stops | async; as stops) {
+  <mgl-image id="bus-station-image" url="/assets/bus-station.png" />
+  <mgl-image
+    id="selected-bus-station-image"
+    url="/assets/selected-bus-station.png" />
+  <mgl-geojson-source id="stops-source" [data]="stops"> </mgl-geojson-source>
+  <mgl-layer
+    id="stops"
+    type="symbol"
+    source="stops-source"
+    [minzoom]="12"
+    (layerClick)="onClick($event)"
+    [before]="vehicleLayerService.currentVehecleLayerId"
+    [layout]="{
+      'icon-allow-overlap': true,
+      'icon-image': [
+        'case',
+        ['==', ['get', 'id'], selectedBusStation$ | async],
+        'selected-bus-station-image',
+        'bus-station-image'
+      ],
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.1, 15, 0.3]
+    }"></mgl-layer>
+  <mgl-layer
+    id="stops-minimized"
+    type="circle"
+    source="stops-source"
+    [maxzoom]="12"
+    [before]="vehicleLayerService.currentVehecleLayerId"
+    (layerClick)="onClick($event)"
+    [paint]="{
+      'circle-radius': 3,
+      'circle-color': [
+        'case',
+        ['==', ['get', 'id'], selectedBusStation$ | async],
+        '#415aa5',
+        '#7ec3f9'
+      ],
+      'circle-stroke-color': 'white',
+      'circle-stroke-width': 1
+    }"></mgl-layer>
+}

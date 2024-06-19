@@ -3,11 +3,20 @@
   [style]="style"
   [zoom]="[13]"
   [center]="[39.70530751811469, 47.24616282214704]">
-  <mgl-image id="stop-image" url="/assets/bus.png" />
+  <app-bus-stations></app-bus-stations>
   <app-vehicle-marker></app-vehicle-marker>
-
+  <app-three-demencional-layer />
   <router-outlet></router-outlet>
+  <router-outlet name="secondRouter"></router-outlet>
 </mgl-map>
+
+
+
+<!-- <router-outlet name="modal"></router-outlet> -->
+
+@for (portal of (portals$ | async) ?? []; track $index) {
+  <ng-template [cdkPortalOutlet]="portal"></ng-template>
+}
 
 <button
   tuiIconButton

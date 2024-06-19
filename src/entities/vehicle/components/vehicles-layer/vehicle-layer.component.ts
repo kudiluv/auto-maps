@@ -16,6 +16,9 @@ import { LayerPropeties } from './types/layer-properties';
 export class VehicleLayerComponent {
   constructor() {}
 
+  @Input({ required: true })
+  id!: string;
+
   @Input()
   layout?: AnyLayout;
   protected get _layout(): AnyLayout {

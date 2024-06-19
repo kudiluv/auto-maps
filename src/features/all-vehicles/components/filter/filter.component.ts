@@ -1,19 +1,18 @@
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
-import { TuiRippleModule, TuiSidebarModule } from '@taiga-ui/addon-mobile';
-import { tuiPure } from '@taiga-ui/cdk';
 import {
-  TuiButtonModule,
-  TuiDialogService,
-  TuiDurationOptions,
-  TuiPrimitiveCheckboxModule,
-  tuiScaleIn,
-} from '@taiga-ui/core';
+  Component,
+  HostListener,
+  Inject,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { tuiPure } from '@taiga-ui/cdk';
+import { TuiDialogService, TuiDurationOptions } from '@taiga-ui/core';
 import { TUI_PROMPT, TuiPromptModule } from '@taiga-ui/kit';
 import { RoutesStore } from 'entities/route/model/routes.store';
 import { VehiclesStore } from 'features/all-vehicles/model/vehicles.store';
-import { map, switchMap, tap } from 'rxjs';
+import { map, shareReplay, switchMap, take, tap } from 'rxjs';
 import { RouteType } from 'shared/enums/route-type.enum';
 import { ControllerModule } from 'shared/modules/controller/controller.module';
 import { GroupFilter, GroupItem } from 'shared/utils/group-filter/group-filter';
@@ -23,6 +22,14 @@ import {
   RxVirtualFor,
 } from '@rx-angular/template/experimental/virtual-scrolling';
 import { Route } from 'entities/route/types/route';
+import {
+  IonButton,
+  IonCheckbox,
+  IonIcon,
+  IonMenu,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { menu } from 'ionicons/icons';
 
 @Component({
   selector: 'app-filter',
@@ -33,23 +40,34 @@ import { Route } from 'entities/route/types/route';
     RxVirtualFor,
     RxVirtualScrollViewportComponent,
     FixedSizeVirtualScrollStrategy,
-    TuiPrimitiveCheckboxModule,
     CommonModule,
-    ScrollingModule,
-    TuiSidebarModule,
     ControllerModule,
-    TuiButtonModule,
     TuiPromptModule,
-    TuiRippleModule,
+    IonMenu,
+    IonCheckbox,
+    IonButton,
+    IonIcon,
   ],
-  animations: [tuiScaleIn],
 })
 export class FilterComponent implements OnInit {
   constructor(
     public routesStore: RoutesStore,
     protected vehiclesStore: VehiclesStore,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
-  ) {}
+  ) {
+    addIcons({ menu });
+  }
+
+  ngOnInit(): void {
+    this.height = window.innerHeight;
+  }
+
+  @ViewChild('menu')
+  menu!: IonMenu;
+
+  openFilter() {
+    this.menu.open();
+  }
 
   @Input()
   public open!: boolean;
@@ -70,7 +88,11 @@ export class FilterComponent implements OnInit {
       })
       .subscribe(response => {
         if (response) {
-          this.routesStore.selectedRoutes.next([]);
+          this.form$.pipe(take(1)).subscribe({
+            next(groupFilter) {
+              groupFilter.clear();
+            },
+          });
         }
       });
   };
@@ -82,6 +104,7 @@ export class FilterComponent implements OnInit {
         : all;
       return new GroupFilter(all, selectedRoutes, 'type').asObservale();
     }),
+    shareReplay(1),
     tap(groupFilter => {
       if (groupFilter.isAll) {
         return this.routesStore.selectedRoutes.next([]);
@@ -135,14 +158,8 @@ export class FilterComponent implements OnInit {
     this.height = window.innerHeight;
   }
 
-  ngOnInit(): void {
-    this.height = window.innerHeight;
-  }
-
   @tuiPure
   getAnimation(duration: number): TuiDurationOptions {
     return { value: '', params: { duration } };
   }
-
-  badgeHandler = () => NaN;
 }
