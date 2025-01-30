@@ -7,7 +7,6 @@ import {
 } from '@taiga-ui/core';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MapModule } from 'features/map/map.module';
 import { TuiThemeNightModule, TuiModeModule } from '@taiga-ui/core';
@@ -24,7 +23,6 @@ import { IonicModule } from '@ionic/angular';
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
-    HttpClientModule,
     CommonModule,
     MapModule,
     TuiThemeNightModule,
