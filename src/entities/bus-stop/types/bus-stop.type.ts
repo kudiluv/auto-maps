@@ -2,6 +2,6 @@ import { Point } from 'geojson';
 
 export type BusStop = {
   id: string;
-  position: Point;
+  coordinates: Point;
   name: string;
 };

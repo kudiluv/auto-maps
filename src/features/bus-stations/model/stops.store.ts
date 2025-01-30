@@ -31,8 +31,7 @@ export class StopsStore {
   );
 
   public selectBusStop(id: string) {
-    this.router.navigate([
-      `/map/bus-stations/${id}`])
+    this.router.navigate([`/map/bus-stations/${id}`]);
   }
 
   public unselectBusStop() {
@@ -47,7 +46,7 @@ export class StopsStore {
           type: 'FeatureCollection',
           features: data.map(
             (bus): Feature => ({
-              geometry: bus.position,
+              geometry: bus.coordinates,
               properties: {
                 id: bus.id,
                 data: bus,
@@ -58,10 +57,5 @@ export class StopsStore {
         })
       )
     )
-    .pipe(
-      share({
-        connector: () => new ReplaySubject(1),
-        resetOnComplete: false,
-      })
-    );
+    .pipe(shareReplay(1));
 }

@@ -61,7 +61,7 @@ import { ThreeDimensionalLayerComponent } from './components/3d-layer/three-deme
     BusStationDetailsComponent,
     NgxMapboxGLModule.withConfig({
       accessToken:
-        'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg',
+        'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY200aW5xbzh3MDRpNjJpcHpoazY5MzFpdCJ9.lHbcBn_S_e7vw-go05RH6w',
     }),
     TuiRippleModule,
     VehicleMarkerComponent,
