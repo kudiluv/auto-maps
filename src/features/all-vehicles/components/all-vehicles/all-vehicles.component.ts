@@ -23,7 +23,6 @@ import { VehicleLayerService } from 'entities/vehicle/model/vehicle-layer.servic
   selector: 'app-all-vehicles',
   templateUrl: './all-vehicles.component.html',
   styleUrl: './all-vehicles.component.scss',
-  standalone: true,
   imports: [
     CommonModule,
     ControllerModule,

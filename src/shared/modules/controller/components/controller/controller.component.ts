@@ -9,8 +9,9 @@ import {
 import { ControllerService } from '../../controller.service';
 
 @Component({
-  selector: 'app-controller',
-  templateUrl: './controller.component.html',
+    selector: 'app-controller',
+    templateUrl: './controller.component.html',
+    standalone: false
 })
 export class ControllerComponent implements OnInit, OnDestroy {
   constructor(private controllerService: ControllerService) {}

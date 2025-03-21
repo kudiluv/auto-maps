@@ -3,9 +3,10 @@ import { ControllerService } from '../../controller.service';
 import { map, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-controller-host',
-  templateUrl: './controller-host.component.html',
-  styleUrls: ['./controller-host.component.scss'],
+    selector: 'app-controller-host',
+    templateUrl: './controller-host.component.html',
+    styleUrls: ['./controller-host.component.scss'],
+    standalone: false
 })
 export class ControllerHostComponent implements OnInit {
   constructor(private controllerService: ControllerService) {}

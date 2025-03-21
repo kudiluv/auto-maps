@@ -1,15 +1,12 @@
 import { Routes } from '@angular/router';
-import { MapComponent } from '../features/map/components/map/map.component';
-import { BusStationDetailsComponent } from 'features/bus-stations/components/bus-station-details/bus-station-details.component';
-import { AllVehiclesComponent } from 'features/all-vehicles';
-import { BusStationDetailsModalComponent } from 'features/bus-stations/components/bus-station-details-modal/bus-station-details-modal.component';
-import { BusStationsComponent } from 'features/bus-stations';
+import { MapLayoutComponent } from 'layouts/map-layout/map-layout.component';
+import { DefaultMapPageComponent } from 'pages/default-map-page/default-map-page.component';
 export const routes: Routes = [
   {
     path: 'map',
-    component: MapComponent,
+    component: MapLayoutComponent,
     children: [
-      { path: 'bus-stations/:busStationId', component: BusStationsComponent },
+      { path: '', component: DefaultMapPageComponent },
       // { path: 'A', component: BusStationDetailsComponent },
       // {
       //   path: 'C',

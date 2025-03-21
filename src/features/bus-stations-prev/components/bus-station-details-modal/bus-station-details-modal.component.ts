@@ -35,20 +35,19 @@ import { VehicleLayerService } from 'entities/vehicle/model/vehicle-layer.servic
  */
 
 @Component({
-  selector: 'app-bus-stations-details-modal',
-  templateUrl: './bus-station-details-modal.component.html',
-  styleUrl: './bus-station-details-modal.component.scss',
-  imports: [
-    VehicleLayerComponent,
-    TuiIconModule,
-    CommonModule,
-    TuiRippleModule,
-    NgxMapboxGLModule,
-    IonicModule,
-    NounPipe,
-    MapDataComponent,
-  ],
-  standalone: true,
+    selector: 'app-bus-stations-details-modal',
+    templateUrl: './bus-station-details-modal.component.html',
+    styleUrl: './bus-station-details-modal.component.scss',
+    imports: [
+        VehicleLayerComponent,
+        TuiIconModule,
+        CommonModule,
+        TuiRippleModule,
+        NgxMapboxGLModule,
+        IonicModule,
+        NounPipe,
+        MapDataComponent,
+    ]
 })
 export class BusStationDetailsModalComponent {
   constructor(

@@ -1,0 +1,30 @@
+<mgl-image id="bus-station-image" url="/assets/bus-station.png" />
+<mgl-image
+  id="selected-bus-station-image"
+  url="/assets/selected-bus-station.png" />
+
+<mgl-geojson-source id="bus-stations-source" [data]="busStationsFeature" />
+
+<mgl-layer
+  id="stops"
+  type="symbol"
+  source="bus-stations-source"
+  [minzoom]="12"
+  [layout]="{
+    'icon-allow-overlap': true,
+    'icon-image': isSelected
+      ? 'selected-bus-station-image'
+      : 'bus-station-image',
+    'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.1, 15, 0.3],
+  }"></mgl-layer>
+<mgl-layer
+  id="stops-minimized"
+  type="circle"
+  source="bus-stations-source"
+  [maxzoom]="12"
+  [paint]="{
+    'circle-radius': 3,
+    'circle-color': isSelected ? '#415aa5' : '#7ec3f9',
+    'circle-stroke-color': 'white',
+    'circle-stroke-width': 1,
+  }"></mgl-layer>

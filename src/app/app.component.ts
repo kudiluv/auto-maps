@@ -8,7 +8,6 @@ import {
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MapModule } from 'features/map/map.module';
 import { TuiThemeNightModule, TuiModeModule } from '@taiga-ui/core';
 import { DarkModeService } from 'shared/services/dark-mode.service';
 import { TuiSheetDialogModule, TuiSheetModule } from '@taiga-ui/addon-mobile';
@@ -17,14 +16,12 @@ import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
     CommonModule,
-    MapModule,
     TuiThemeNightModule,
     TuiModeModule,
     TuiSheetDialogModule,

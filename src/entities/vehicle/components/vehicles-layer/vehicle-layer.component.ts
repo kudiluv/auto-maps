@@ -7,11 +7,10 @@ import { AnyLayout } from 'mapbox-gl';
 import { LayerPropeties } from './types/layer-properties';
 
 @Component({
-  selector: 'app-vehicle-layer',
-  templateUrl: './vehicle-layer.component.html',
-  styleUrl: './vehicle-layer.component.scss',
-  imports: [NgxMapboxGLModule, CommonModule],
-  standalone: true,
+    selector: 'app-vehicle-layer',
+    templateUrl: './vehicle-layer.component.html',
+    styleUrl: './vehicle-layer.component.scss',
+    imports: [NgxMapboxGLModule, CommonModule]
 })
 export class VehicleLayerComponent {
   constructor() {}

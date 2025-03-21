@@ -32,22 +32,21 @@ import { addIcons } from 'ionicons';
 import { menu } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss',
-  standalone: true,
-  imports: [
-    RxVirtualFor,
-    RxVirtualScrollViewportComponent,
-    FixedSizeVirtualScrollStrategy,
-    CommonModule,
-    ControllerModule,
-    TuiPromptModule,
-    IonMenu,
-    IonCheckbox,
-    IonButton,
-    IonIcon,
-  ],
+    selector: 'app-filter',
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.scss',
+    imports: [
+        RxVirtualFor,
+        RxVirtualScrollViewportComponent,
+        FixedSizeVirtualScrollStrategy,
+        CommonModule,
+        ControllerModule,
+        TuiPromptModule,
+        IonMenu,
+        IonCheckbox,
+        IonButton,
+        IonIcon,
+    ]
 })
 export class FilterComponent implements OnInit {
   constructor(

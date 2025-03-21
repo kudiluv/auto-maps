@@ -1,4 +1,6 @@
-@if (stopsStore.stops | async; as stops) {
+@let stops = stopsStore.stops | async;
+
+@if (stops) {
   <mgl-image id="bus-station-image" url="/assets/bus-station.png" />
   <mgl-image
     id="selected-bus-station-image"

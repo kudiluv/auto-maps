@@ -20,7 +20,6 @@ import { VehicleLayerService } from 'entities/vehicle/model/vehicle-layer.servic
     MapDataComponent,
     BusStationDetailsComponent,
   ],
-  standalone: true,
 })
 export class BusStationsComponent {
   constructor(

@@ -1,0 +1,14 @@
+@let mapStyle = mapStyle$ | async;
+
+<mgl-map
+  [style]="mapStyle ?? undefined"
+  [zoom]="[zoom]"
+  [accessToken]="accessToken"
+  [center]="center">
+  <app-vehicle-marker></app-vehicle-marker>
+  <router-outlet></router-outlet>
+</mgl-map>
+
+<!-- @for (portal of (portals$ | async) ?? []; track $index) {
+  <ng-template [cdkPortalOutlet]="portal"></ng-template>
+} -->

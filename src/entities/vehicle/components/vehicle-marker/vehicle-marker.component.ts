@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { VehiclePosition } from 'entities/vehicle/types/vehicle-position.type';
 import { RoutesStore } from 'entities/route/model/routes.store';
 
+/**
+ * Компонент для генерации маркеров транспортных средств
+ */
 @Component({
   selector: 'app-vehicle-marker',
   templateUrl: './vehicle-marker.component.html',
   styleUrl: './vehicle-marker.component.scss',
-  standalone: true,
   imports: [NgxMapboxGLModule, CommonModule],
 })
 export class VehicleMarkerComponent {

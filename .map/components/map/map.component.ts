@@ -2,7 +2,6 @@ import {
   Component,
   HostListener,
   OnInit,
-  ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { Observable, map } from 'rxjs';
@@ -12,19 +11,13 @@ import { UserPositionStore } from 'entities/user/model/user-position.store';
 import { MapsService } from 'features/map/model/maps.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import {
-  CdkPortalOutlet,
-  ComponentPortal,
-  Portal,
-  TemplatePortal,
-} from '@angular/cdk/portal';
-import { MapDataComponent } from '../map-data/map-data.componet';
-import { BusStationDetailsComponent } from 'features/bus-stations/components/bus-station-details/bus-station-details.component';
+import { TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss',
+  standalone: false,
 })
 export class MapComponent implements OnInit {
   constructor(
